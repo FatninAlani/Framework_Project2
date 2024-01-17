@@ -22,7 +22,7 @@ class _signUpState extends State<signUp> {
   final passController = TextEditingController();
   String? _error;
 
-  void signUpUser() async {
+  void signUp() async {
     final url = Uri.https(
       'hoteluser-16325-default-rtdb.asia-southeast1.firebasedatabase.app',
       'HotelUser.json',
@@ -39,6 +39,12 @@ class _signUpState extends State<signUp> {
       );
 
       if (response.statusCode == 200) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Login(),
+          ),
+        );
         print('signed up success!');
       } else {
         setState(() {
